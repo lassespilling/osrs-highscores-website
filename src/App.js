@@ -49,7 +49,7 @@ function App() {
                 image:
                     "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSyxqtQ7aFpikewNlUK2TvAGvlemq5jucclWg&usqp=CAU",
                 knownFor:
-                    "Spille AFK på mobil mens han soler seg på terassen etter å ha dytta drit ut av rør i timesvis.",
+                    "Spille AFK på mobil mens han soler seg på terassen mens han klør mellom fingrene på grunn av stadig bruk av Mudin.",
             },
         ];
         for (let i = 0; i < playerArray.length; i++) {
@@ -375,21 +375,20 @@ function App() {
     return (
         <main className="py-5">
             <h1 className="text-center mb-4 py-3">OSRS - Team Søgne</h1>
-            <Fade>
-                <div className="d-block d-md-flex justify-content-center">
-                    {playerSkillTable}
-                    {/* {loaded ? (
-                        playerSkillTable
-                    ) : (
-                        <Fade>
-                            <img
-                                alt="loading"
-                                src="https://i.makeagif.com/media/4-19-2016/jclhrB.gif"
-                            />
-                        </Fade>
-                    )} */}
-                </div>
-            </Fade>
+            <div className="d-block d-md-flex justify-content-center">
+                {loaded ? (
+                    playerSkillTable
+                ) : (
+                    <Fade>
+                        <img
+                            alt="loading"
+                            src="https://i.makeagif.com/media/4-19-2016/jclhrB.gif"
+                            style={{ maxWidth: "70vw" }}
+                            className="mx-auto d-block"
+                        />
+                    </Fade>
+                )}
+            </div>
         </main>
     );
 }
