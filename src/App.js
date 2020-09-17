@@ -10,7 +10,13 @@ import Gravatar from "react-gravatar";
 // Icons
 import { GiTrophyCup } from "react-icons/gi";
 
+import { Accordion, Button } from "react-bootstrap";
+
+// Hooks
+import useWindowDimensions from "useWindowDimensions";
+
 function App() {
+    const { width } = useWindowDimensions();
     const { hiscores } = require("osrs-json-api");
     let highscores = hiscores;
     const [players, setPlayers] = React.useState([{}]);
@@ -113,7 +119,10 @@ function App() {
         };
         return (
             <Fade>
-                <div className="d-block d-md-flex flex-column px-4">
+                <div
+                    className="d-block d-xl-flex flex-column px-4 mb-4"
+                    style={{ maxWidth: width < 1000 ? "100vw" : "300px" }}
+                >
                     <div className="bg-light text-dark d-flex justify-content-between pl-3 align-items-center">
                         <h1
                             className="sticky text-center mb-0"
@@ -124,7 +133,7 @@ function App() {
                         {getImage()}
                     </div>
                     <div className="dark text-white py-4 text-left">
-                        <div className="mb-4">
+                        <div className="mb-4" style={{ minHeight: 150 }}>
                             <h2 className="text-uppercase text-warning">
                                 Kjent for:
                             </h2>
@@ -321,50 +330,61 @@ function App() {
                                 )}
                         </ul>
                     </div>
-                    <table key={`table-${parentIndex}`}>
-                        <tbody key={`table-body-${parentIndex}`}>
-                            {skills &&
-                                Object.entries(skills).map(
-                                    ([key, value], index) => (
-                                        <tr key={`row-${index}`}>
-                                            <th
-                                                key={`skill-name-${index}`}
-                                                className="d-flex align-items-center"
-                                            >
-                                                {key !== "overall" && (
-                                                    <div
-                                                        style={{
-                                                            width: 50,
-                                                            height: 50,
-                                                        }}
-                                                        className="mr-3 rounded-circle overflow-hidden position-relative"
+                    <Accordion defaultActiveKey={width > 1000 ? "1" : "0"}>
+                        <Accordion.Toggle
+                            as={Button}
+                            variant="primary"
+                            eventKey="1"
+                        >
+                            Vis mine stats
+                        </Accordion.Toggle>
+                        <Accordion.Collapse eventKey="1">
+                            <table key={`table-${parentIndex}`}>
+                                <tbody key={`table-body-${parentIndex}`}>
+                                    {skills &&
+                                        Object.entries(skills).map(
+                                            ([key, value], index) => (
+                                                <tr key={`row-${index}`}>
+                                                    <th
+                                                        key={`skill-name-${index}`}
+                                                        className="d-flex align-items-center"
                                                     >
-                                                        <img
-                                                            alt={`skill-icon_${key}`}
-                                                            src={require(`img/RS_Icons_${capitalize(
-                                                                key
-                                                            )}.jpg`)}
-                                                            className=" absolute-center"
-                                                            style={{
-                                                                width: 100,
-                                                                height: 100,
-                                                            }}
-                                                        />
-                                                    </div>
-                                                )}
-                                                {key}
-                                            </th>
-                                            <td
-                                                key={`skill-level-${index}`}
-                                                className="text-center"
-                                            >
-                                                {value.level}
-                                            </td>
-                                        </tr>
-                                    )
-                                )}
-                        </tbody>
-                    </table>
+                                                        {key !== "overall" && (
+                                                            <div
+                                                                style={{
+                                                                    width: 50,
+                                                                    height: 50,
+                                                                }}
+                                                                className="mr-3 rounded-circle overflow-hidden position-relative"
+                                                            >
+                                                                <img
+                                                                    alt={`skill-icon_${key}`}
+                                                                    src={require(`img/RS_Icons_${capitalize(
+                                                                        key
+                                                                    )}.jpg`)}
+                                                                    className=" absolute-center"
+                                                                    style={{
+                                                                        width: 100,
+                                                                        height: 100,
+                                                                    }}
+                                                                />
+                                                            </div>
+                                                        )}
+                                                        {key}
+                                                    </th>
+                                                    <td
+                                                        key={`skill-level-${index}`}
+                                                        className="text-center"
+                                                    >
+                                                        {value.level}
+                                                    </td>
+                                                </tr>
+                                            )
+                                        )}
+                                </tbody>
+                            </table>
+                        </Accordion.Collapse>
+                    </Accordion>
                 </div>
             </Fade>
         );
@@ -383,7 +403,7 @@ function App() {
                         <img
                             alt="loading"
                             src="https://i.makeagif.com/media/4-19-2016/jclhrB.gif"
-                            style={{ maxWidth: "70vw" }}
+                            style={{ maxWidth: "100vw" }}
                             className="mx-auto d-block"
                         />
                     </Fade>
