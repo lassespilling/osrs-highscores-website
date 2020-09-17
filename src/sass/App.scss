@@ -1,0 +1,125 @@
+// Colours
+@function tint($color, $percentage) {
+    @return mix(white, $color, $percentage);
+}
+
+@function shade($color, $percentage) {
+    @return mix(black, $color, $percentage);
+}
+
+// Bootstrap overrides
+$primary: #a15b2c;
+$secondary: #a1992c;
+$dark: rgb(22, 17, 15);
+$light: #ebe9db;
+$info: rgb(139, 160, 216);
+
+$body-color: rgb(223, 200, 191);
+$body-bg: tint($dark, 10%);
+
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+body {
+    &:before {
+        content: "";
+        background: url("https://thumbs.gfycat.com/TatteredDelectableGazelle-size_restricted.gif")
+            center center / cover no-repeat;
+        filter: brightness(30%);
+        z-index: -1;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+    }
+}
+table {
+    text-align: left;
+    background: rgba($dark, 0.8);
+}
+tr {
+    border-bottom: 1px solid rgba($light, 0.3);
+}
+th {
+    text-transform: capitalize;
+    padding: 1em 3em 1em 1em;
+}
+td {
+    border-left: 1px solid rgba($light, 0.3);
+    padding: 1em;
+}
+h1 {
+    text-transform: capitalize;
+}
+@include media-breakpoint-down(md) {
+    table {
+        width: 100%;
+    }
+}
+.sticky {
+    position: sticky;
+    top: 0;
+    z-index: 100; /* this is optional and should be different for every project */
+}
+.list-style-none {
+    list-style: none;
+}
+.between-list {
+    & li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+.rock {
+    color: rgb(112, 98, 86);
+}
+.bronze {
+    color: rgb(150, 129, 110);
+}
+.silver {
+    color: rgb(202, 202, 202);
+}
+.gold {
+    color: rgb(216, 172, 50);
+}
+.platinum {
+    color: rgb(210, 32, 255);
+}
+.not-unlocked {
+    text-decoration: line-through;
+}
+.absolute-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.text-firemaking {
+    color: #ab5d24;
+}
+.text-fishing {
+    color: #81c7cb;
+}
+.text-prayer {
+    color: #d8ba30;
+}
+.text-defence {
+    color: #505e92;
+}
+.text-attack {
+    color: #723333;
+}
+.text-woodcutting {
+    color: #9a7f4e;
+}
+.text-smithing {
+    color: #5e5c4e;
+}
+.text-cooking {
+    color: #7e5b7f;
+}
+// @for $i from 1 through 100 {
+//     .opacity-#{$i} {
+//         opacity: #{$i};
+//     }
+// }
