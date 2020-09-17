@@ -21,24 +21,35 @@ function App() {
     };
     React.useEffect(() => {
         const playerArray = [
-            { name: "svampefett", email: "lassespilling@gmail.com", image: "" },
+            {
+                name: "svampefett",
+                email: "lassespilling@gmail.com",
+                image: "",
+                knownFor: "Å motivere andre til å bli spillavhengige.",
+            },
             {
                 name: "walsibooy",
                 email: "",
                 image:
                     "https://media-exp1.licdn.com/dms/image/C5603AQHWSQ4YaYL-6Q/profile-displayphoto-shrink_400_400/0?e=1605744000&v=beta&t=Ks_bSTJZu8le4aykY4Usk4ZU_nTNa2OO-bS0DlhTDkA",
+                knownFor:
+                    "Bruke timesvis på å tjene gull istedenfor å gå ned en grandis i måneden.",
             },
             {
                 name: "ingejj",
                 email: "",
                 image:
                     "https://media-exp1.licdn.com/dms/image/C5603AQGrtLvMzXbVpg/profile-displayphoto-shrink_400_400/0?e=1605744000&v=beta&t=2UCU-zsqSPB4HpM2PdPfW2nZ8eB0kMqtvETNztllBCk",
+                knownFor:
+                    "Spille AFK på mobil mens han lytter til smooth jazz.",
             },
             {
                 name: "liss123",
                 email: "",
                 image:
                     "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSyxqtQ7aFpikewNlUK2TvAGvlemq5jucclWg&usqp=CAU",
+                knownFor:
+                    "Spille AFK på mobil mens han soler seg på terassen etter å ha dytta drit ut av rør i timesvis.",
             },
         ];
         for (let i = 0; i < playerArray.length; i++) {
@@ -48,6 +59,7 @@ function App() {
                     playerName: playerArray[i].name,
                     email: playerArray[i].email,
                     image: playerArray[i].image,
+                    knownFor: playerArray[i].knownFor,
                 };
                 setPlayers((players) => [...players, newPlayer]);
                 setAttack((attack) => [...attack, newPlayer.skills.attack]);
@@ -76,6 +88,7 @@ function App() {
     };
     const showPlayer = (playerObject, parentIndex) => {
         let name = playerObject.playerName;
+        let knownFor = playerObject.knownFor;
         let email = playerObject.email;
         let skills = playerObject.skills;
         let image = playerObject.image;
@@ -111,6 +124,14 @@ function App() {
                         {getImage()}
                     </div>
                     <div className="dark text-white py-4 text-left">
+                        <div className="mb-4">
+                            <h2 className="text-uppercase text-warning">
+                                Kjent for:
+                            </h2>
+                            <ul className="list-style-none mb-0 d-flex justify-content-center flex-column p-0">
+                                <li>{knownFor}</li>
+                            </ul>
+                        </div>
                         <h2 className="text-uppercase text-warning">
                             Achievements:
                         </h2>
@@ -354,18 +375,21 @@ function App() {
     return (
         <main className="py-5">
             <h1 className="text-center mb-4 py-3">OSRS - Team Søgne</h1>
-            <div className="d-block d-md-flex justify-content-center">
-                {loaded ? (
-                    playerSkillTable
-                ) : (
-                    <Fade>
-                        <img
-                            alt="loading"
-                            src="https://i.makeagif.com/media/4-19-2016/jclhrB.gif"
-                        />
-                    </Fade>
-                )}
-            </div>
+            <Fade>
+                <div className="d-block d-md-flex justify-content-center">
+                    {playerSkillTable}
+                    {/* {loaded ? (
+                        playerSkillTable
+                    ) : (
+                        <Fade>
+                            <img
+                                alt="loading"
+                                src="https://i.makeagif.com/media/4-19-2016/jclhrB.gif"
+                            />
+                        </Fade>
+                    )} */}
+                </div>
+            </Fade>
         </main>
     );
 }
