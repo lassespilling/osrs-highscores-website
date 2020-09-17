@@ -38,10 +38,11 @@ table {
 }
 tr {
     border-bottom: 1px solid rgba($light, 0.3);
+    width: 100%;
 }
 th {
     text-transform: capitalize;
-    padding: 1em 3em 1em 1em;
+    padding: 1em;
 }
 td {
     border-left: 1px solid rgba($light, 0.3);
