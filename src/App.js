@@ -120,12 +120,12 @@ function App() {
         return (
             <Fade>
                 <div
-                    className="d-block d-xl-flex flex-column px-4 mb-4"
+                    className="d-block d-xl-flex flex-column px-4 mb-4 position-relative"
                     style={{ maxWidth: width < 1000 ? "100vw" : "300px" }}
                 >
-                    <div className="bg-light text-dark d-flex justify-content-between pl-3 align-items-center">
+                    <div className="bg-light text-dark d-flex justify-content-between pl-3 align-items-center sticky">
                         <h1
-                            className="sticky text-center mb-0"
+                            className="text-center mb-0"
                             key={`player-name-${parentIndex}`}
                         >
                             {name}
