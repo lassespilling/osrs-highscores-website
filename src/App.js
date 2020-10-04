@@ -34,7 +34,7 @@ function App() {
                 knownFor: "Å motivere andre til å bli spillavhengige.",
             },
             {
-                name: "walsibooy",
+                name: "mrwalsii",
                 email: "",
                 image:
                     "https://media-exp1.licdn.com/dms/image/C5603AQHWSQ4YaYL-6Q/profile-displayphoto-shrink_400_400/0?e=1605744000&v=beta&t=Ks_bSTJZu8le4aykY4Usk4ZU_nTNa2OO-bS0DlhTDkA",
